@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Viewer</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
+</head>
+<body>
+    <h2>Log Viewer wersja z dnia 20.12.24</h2>
+
+    <!-- Controls Section -->
+    <div class="controls">
+        <select id="typeFilter">
+            <option value="">Wszystkie Typy</option>
+            <option value="ERROR">ERROR</option>
+            <option value="DEBUG">DEBUG</option>
+            <option value="INFO">INFO</option>
+        </select>
+        <select id="userFilter">
+            <option value="">Wszyscy Użytkownicy</option>
+            <option value="user1">user1</option>
+            <option value="user2">user2</option>
+            <option value="user3">user3</option>
+            <option value="user4">user4</option>
+        </select>
+        <input type="text" id="startDate" placeholder="Początkowa data">
+        <input type="text" id="endDate" placeholder="Końcowa data">
+        <select id="logSource">
+            <option value="PRO">PRO</option>
+            <option value="BETA">BETA</option>
+        </select>
+        <button id="refreshBtn">Odśwież</button>
+        <button id="toggleDetailsBtn">Ukryj szczegóły</button>
+        <label><input type="checkbox" id="colorizeRows"> Kolorowanie wierszy</label>
+        <label><input type="checkbox" id="autoRefresh"> Automatyczne śledzenie zmian</label>
+        <select id="entriesPerPage">
+            <option value="10">10</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="300">300</option>
+            <option value="400">400</option>
+            <option value="500">500</option>
+            <option value="10000">10000</option>
+        </select>
+        <div class="theme-toggle">
+            <label class="switch">
+                <input type="checkbox" id="themeSwitcher">
+                <span class="slider round"></span>
+            </label>
+            <span class="moon-icon">🌙</span>
+        </div>
+    </div>
+
+    <!-- Table Container -->
+    <div class="table-container">
+        <table id="logTable" class="display">
+            <thead>
+                <tr>
+                    <th>Dzień</th>
+                    <th>Czas</th>
+                    <th>Zdarzenie</th>
+                    <th>Obiekt</th>
+                    <th>Użytkownik</th>
+                    <th>Szczegóły</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

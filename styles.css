@@ -1,0 +1,292 @@
+/* Resetowanie stylów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Sticky dla sekcji controls */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Kontener tabeli */
+.table-container {
+    overflow-x: auto;
+    max-width: 100%;
+    padding-bottom: 40px;
+}
+
+/* Tabela */
+#logTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+    table-layout: fixed;
+}
+
+#logTable thead {
+    background-color: #f4f4f4;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+#logTable th,
+#logTable td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Kolorowanie wierszy */
+#logTable tbody tr.error-row td {
+    background-color: #f8d7da !important; /* Czerwony dla ERROR */
+    color: #721c24; /* Tekst czerwony */
+}
+
+#logTable tbody tr.info-row td {
+    background-color: #d4edda !important; /* Zielony dla INFO */
+    color: #155724; /* Tekst zielony */
+}
+
+#logTable tbody tr.debug-row td {
+    background-color: #f8f9fa !important; /* Szary dla DEBUG */
+    color: #343a40; /* Tekst szary */
+}
+
+/* Kolorowanie wierszy w trybie ciemnym */
+body.dark-mode #logTable tbody tr.error-row td {
+    background-color: #6e1a1a !important; /* Ciemny czerwony */
+    color: #f8d7da; /* Jasny tekst czerwony */
+}
+
+body.dark-mode #logTable tbody tr.info-row td {
+    background-color: #1a3e1a !important; /* Ciemny zielony */
+    color: #d4edda; /* Jasny tekst zielony */
+}
+
+body.dark-mode #logTable tbody tr.debug-row td {
+    background-color: #2e2e2e !important; /* Ciemny szary */
+    color: #f8f9fa; /* Jasny tekst szary */
+}
+
+/* Wyłączenie alternatywnego kolorowania dla typów */
+#logTable tbody tr:nth-child(even) {
+    background-color: transparent !important; /* Usuń alternatywne kolory */
+}
+
+/* Efekt hover */
+#logTable tbody tr:hover {
+    background-color: #f1f1f1; /* Efekt hover */
+}
+
+body.dark-mode #logTable tbody tr:hover {
+    background-color: #333;
+}
+
+/* Szczegóły kolumny */
+#logTable td.details.collapsed {
+    display: block;
+    max-height: 60px; /* Ograniczenie wysokości do 3 linii */
+    overflow: hidden;
+    white-space: normal; /* Pozwól na zawijanie tekstu */
+    cursor: pointer;
+    transition: max-height 0.3s ease, background-color 0.3s ease;
+}
+
+#logTable td.details.expanded {
+    max-height: none; /* Usuń ograniczenie wysokości */
+    overflow: visible;
+    white-space: normal;
+    cursor: pointer;
+    background-color: #f4f4f4;
+    transition: max-height 0.3s ease, background-color 0.3s ease;
+}
+
+/* Normalny tryb */
+#logTable td.details:hover {
+    background-color: #f4f4f4;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Tryb ciemny */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .controls {
+    background-color: #1e1e1e;
+    border-color: #444;
+}
+
+body.dark-mode #logTable {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode #logTable th {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode #logTable td {
+    background-color: #222;
+    color: #e0e0e0;
+}
+
+body.dark-mode #logTable td.details {
+    background-color: #222;
+    color: #e0e0e0;
+}
+
+body.dark-mode #logTable td.details:hover {
+    background-color: #333;
+}
+
+body.dark-mode #logTable td.details.expanded {
+    background-color: #444;
+}
+
+/* Sticky dla paginacji */
+.dataTables_paginate {
+    position: sticky;
+    bottom: 0; /* Przypięcie do dołu widoku */
+    z-index: 1000;
+    background-color: white;
+    padding: 5px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.dataTables_paginate a,
+.dataTables_paginate span {
+    padding: 4px 8px;
+    margin: 2px;
+    text-decoration: none;
+    color: #007bff;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dataTables_paginate a:hover {
+    background-color: #e2e6ea;
+    color: #0056b3;
+}
+
+.dataTables_paginate .current {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #0056b3;
+}
+
+/* Tryb ciemny dla paginacji */
+body.dark-mode .dataTables_paginate {
+    background-color: #1e1e1e;
+    border-color: #444;
+}
+
+body.dark-mode .dataTables_paginate a {
+    color: #bbb;
+    background-color: #333;
+    border-color: #555;
+}
+
+body.dark-mode .dataTables_paginate a:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+/* Nagłówki kolumn */
+#logTable th {
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #f4f4f4;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Styl dla przełącznika motywu */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-toggle .switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.theme-toggle .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-toggle .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.theme-toggle .slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.theme-toggle input:checked + .slider {
+    background-color: #007bff;
+}
+
+.theme-toggle input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #logTable th,
+    #logTable td {
+        font-size: 12px; /* Zmniejszenie czcionki na mniejszych ekranach */
+    }
+}
